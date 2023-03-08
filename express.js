@@ -19,7 +19,7 @@ app.use(express.static('public'))
 //---------------------------------------------------------------------- JOKES ROUTES ------------------------------------------------------------------------------
 app.get("/jokes", function(req, res){
     //SELECT jokes.id, jokes.joke_question, jokes.joke_answer, AVG(reviews.reviews_rating), COUNT(reviews.reviews_rating) FROM jokes INNER JOIN reviews ON jokes.id=reviews.joke_id
-    pool.query('SELECT jokes.id, jokes.joke_question, jokes.joke_answer, AVG(reviews.review_rating), COUNT(reviews.review_rating) FROM jokes LEFT JOIN reviews ON jokes.id=reviews.joke_id GROUP BY jokes.id;', (err, data) => {  
+    pool.query('SELECT jokes.id, jokes.joke_question, jokes.joke_answer, CAST(AVG(reviews.review_rating) AS DECIMAL(10,2)), COUNT(reviews.review_rating) FROM jokes LEFT JOIN reviews ON jokes.id=reviews.joke_id GROUP BY jokes.id;', (err, data) => {  
       res.json(data.rows);
     })
  })
@@ -36,7 +36,6 @@ app.post("/jokes", function(req, res){
   const answer = req.body.joke_answer;
 
   pool.query('INSERT INTO jokes (joke_question, joke_answer) VALUES ($1, $2)',[question, answer], (err, data) => {res.send('POST Successfull') })
-    res.json(data.rows);
 })
 //---------------------------------------------------------------------- REVIEW ROUTES ------------------------------------------------------------------------------
 app.post("/reviews", function(req, res){
@@ -45,7 +44,6 @@ app.post("/reviews", function(req, res){
     const name = req.body.name;
   
     pool.query('INSERT INTO reviews (joke_id, review_rating, name) VALUES ($1, $2, $3)',[joke_id, rating, name], (err, data) => { res.send('POST Successfull')})
-      res.json(data.rows);
     })
 
 app.delete("/reviews/:Id", function(req, res){

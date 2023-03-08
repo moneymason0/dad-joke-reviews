@@ -1,0 +1,148 @@
+body{
+    background-image: url("https://wallpapers.com/images/featured/9ngi51dd49q4q24i.jpg");
+}
+
+h1{
+    color: white;
+    font-family: 'Rampart One', cursive;
+    font-size: 80px;
+    text-align: center;
+}
+
+.postJoke, .postReview, .reviewStats{
+    color: white;
+    font-size: 30px;
+    width: 40%;
+
+    background-color: rgba(0, 0, 0, 0.842);
+    border-color: white;
+    border-style: solid;
+    border-width: 3px;
+
+    position:fixed;
+    left: 20%;
+    top: 20%;
+
+    animation: fadeInDown 1s;
+}
+
+#header{
+    text-decoration: underline;
+    border-bottom:2px dashed white;
+}
+
+.jokeTable, .reviewTable{
+    color: white;
+    background-color: rgba(75, 69, 69, 0.759);
+    font-size: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    overflow: scroll;
+    height: 300px;
+
+    animation: fadeInDown 1s;
+}
+
+.controls{
+    width:100%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#retrieveButton, #createButton{
+    transition: all 0.3s ease-in-out;
+    height: fit-content;
+    width: fit-content;
+    margin: 40px;
+ 
+    color: white;
+    background-color: rgba(75, 69, 69, 0.459);
+  
+    border-color: white;
+    border-style: solid;
+    border-width: 4px;
+    border-radius: 10px;
+  
+    font-size: 50px;
+    font-weight: bold;
+    font-family: 'Rampart One', cursive;
+   
+    animation: fadeInDown 2s;
+}
+
+img{
+    padding:20px;
+    transition: all 0.3s ease-in-out;
+}
+
+img:hover{
+    transform: scale(1.5);
+}
+
+#closeButton{
+    margin-left: 90%;
+}
+
+#createButton:hover, #retrieveButton:hover{
+    color: black;
+    background-color: white;
+  
+    border-color: black;
+  
+    transform: scale(1.2);
+}
+
+.cell{
+    display: table-cell;
+    padding: 10px;
+}
+
+.row{
+    display: table-row;
+}
+
+.rating {
+    float:left;
+    width:300px;
+}
+.rating span { float:right; position:relative; }
+.rating span input {
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+}
+.rating span label {
+    display:inline-block;
+    width:30px;
+    height:30px;
+    text-align:center;
+    color:#FFF;
+    background:#ccc;
+    font-size:30px;
+    margin-right:2px;
+    line-height:30px;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+}
+.rating span:hover ~ span label,
+.rating span:hover label,
+.rating span.checked label,
+.rating span.checked ~ span label {
+    background:#F90;
+    color:#FFF;
+}
+
+@keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-80px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+  } 
